@@ -48,8 +48,8 @@ class Deck {
     Card deal();
     // MODIFIES: this
 
-    // EFFECTS: returns the next card to be dealt.  If no cards
-    // remain, throws an instance of DeckEmpty.
+    // EFFECTS: deals the "next" card and returns that card.
+    // If no cards remain, throws an instance of DeckEmpty.
 
     int cardsLeft();
     // EFFECTS: returns the number of cards in the deck that have not

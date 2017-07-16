@@ -4,20 +4,6 @@
 
 #include "deck.h"
 
-template<class T>
-static inline int length(T &a)
-{
-    return sizeof(a) / sizeof(a[0]);
-}
-
-template<class T>
-static inline T operator++(T &a, int)
-{
-    auto old = a;
-    a = T(a + 1);
-    return old;
-}
-
 Deck::Deck()
 {
     this->reset();
@@ -25,13 +11,13 @@ Deck::Deck()
 
 void Deck::reset()
 {
-    for (auto suit = SPADES; suit < length(SuitNames); suit++)
+    for (int suit = SPADES; suit < SUIT_SIZE; suit++)
     {
-        for (auto spot = TWO; spot < length(SpotNames); spot++)
+        for (int spot = TWO; spot < SPOT_SIZE; spot++)
         {
-            int index = suit * length(SpotNames) + spot;
-            this->deck[index].suit = suit;
-            this->deck[index].spot = spot;
+            int index = suit * SPOT_SIZE + spot;
+            this->deck[index].suit = Suit(suit);
+            this->deck[index].spot = Spot(spot);
         }
     }
     this->next = 0;
@@ -54,11 +40,13 @@ void Deck::shuffle(int n)
     {
         if (right < rightNum)
         {
-            this->deck[left + right] = rightCards[right++];
+            this->deck[left + right] = rightCards[right];
+            right++;
         }
         if (left < leftNum)
         {
-            this->deck[left + right] = leftCards[left++];
+            this->deck[left + right] = leftCards[left];
+            left++;
         }
     }
     this->next = 0;

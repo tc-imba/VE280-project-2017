@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <cstdlib>
 #include "card.h"
 #include "deck.h"
@@ -7,8 +8,6 @@
 
 using namespace std;
 
-const int MINIMUM_BET = 5;
-
 string getCardName(const Card &card)
 {
     return string(SpotNames[card.spot]) + " of " + SuitNames[card.suit];
@@ -16,7 +15,7 @@ string getCardName(const Card &card)
 
 void shuffle(Deck &deck, Player *player)
 {
-    cout << "Shuffling the deck\n";
+    cout << "# Shuffling the deck\n";
     for (int i = 0; i < 7; i++)
     {
         int cut = get_cut();
@@ -26,22 +25,29 @@ void shuffle(Deck &deck, Player *player)
     player->shuffled();
 }
 
-Card deal(Deck &deck, Hand &hand, Player *player, bool isExposed = true)
+void shuffle(Deck &deck, Player *player, const char *filename)
+{
+    fstream input(filename);
+    cout << "# Shuffling the deck\n";
+    while (!input.eof())
+    {
+        string cut;
+        input >> cut;
+        if (cut.empty()) break;
+        deck.shuffle(atoi(cut.c_str()));
+        cout << "cut at " << cut << endl;
+    }
+    player->shuffled();
+}
+
+Card deal(Deck &deck, Hand &hand, Player *player, bool isPlayer, bool isExposed)
 {
     Card card = deck.deal();
     hand.addCard(card);
     if (isExposed)
     {
-        if (player != NULL)
-        {
-            player->expose(card);
-            cout << "Player";
-        }
-        else
-        {
-            cout << "Dealer";
-        }
-        cout << " dealt " << getCardName(card) << endl;
+        player->expose(card);
+        cout << (isPlayer ? "Player" : "Dealer") << " dealt " << getCardName(card) << endl;
     }
     return card;
 }
@@ -49,86 +55,86 @@ Card deal(Deck &deck, Hand &hand, Player *player, bool isExposed = true)
 int main(int argc, char *argv[])
 {
     int bankroll = atoi(argv[1]);
-    int hands = atoi(argv[2]);
+    int minimum_bet = atoi(argv[2]);
+    int hands = atoi(argv[3]);
     int thishand = 0;
 
     Deck deck;
     Player *player;
-    if (string(argv[3]) == "simple")
+    if (string(argv[4]) == "simple")
     {
         player = get_Simple();
-    }
-    else
+    } else
     {
         player = get_Counting();
     }
-    shuffle(deck, player);
+
+    if (argc > 5)shuffle(deck, player, argv[5]);
+    else shuffle(deck, player);
+
+
     Hand handDealer, handPlayer;
-    while (bankroll >= MINIMUM_BET && thishand < hands)
+    while (bankroll >= minimum_bet && thishand < hands)
     {
-        cout << "Hand " << ++thishand << " bankroll " << bankroll << endl;
+        cout << "# Hand " << ++thishand << " bankroll " << bankroll << endl;
         if (deck.cardsLeft() < 20)
         {
             shuffle(deck, player);
         }
-        int wager = player->bet(bankroll, MINIMUM_BET);
-        cout << "Player bets " << wager << endl;
+        int wager = player->bet(bankroll, minimum_bet);
+        cout << "# Player bets " << wager << endl;
         handPlayer.discardAll();
         handDealer.discardAll();
-        deal(deck, handPlayer, player);
-        auto dealerCard = deal(deck, handDealer, NULL);
-        deal(deck, handPlayer, player);
-        auto holeCard = deal(deck, handDealer, NULL, false);
+        deal(deck, handPlayer, player, true, true);
+        auto dealerCard = deal(deck, handDealer, player, false, true);
+        deal(deck, handPlayer, player, true, true);
+        auto holeCard = deal(deck, handDealer, player, false, false);
         if (handPlayer.handValue().count == 21)
         {
-            cout << "Player dealt natural 21\n";
+            cout << "# Player dealt natural 21\n";
             bankroll += 1.5 * wager;
             continue;
         }
         while (player->draw(dealerCard, handPlayer))
         {
-            deal(deck, handPlayer, player);
+            deal(deck, handPlayer, player, true, true);
         }
         int player_count = handPlayer.handValue().count;
+        cout << "Player's total is " << player_count << endl;
         if (player_count <= 21)
         {
-            cout << "Player's total is " << player_count << endl;
             cout << "Dealer's hole card is " << getCardName(holeCard) << endl;
             player->expose(holeCard);
             int dealer_count = handDealer.handValue().count;
             while (dealer_count < 17)
             {
-                deal(deck, handDealer, NULL);
+                deal(deck, handDealer, player, false, true);
                 dealer_count = handDealer.handValue().count;
             }
             cout << "Dealer's total is " << dealer_count << endl;
             if (dealer_count > 21)
             {
-                cout << "Dealer busts\n";
+                cout << "# Dealer busts\n";
                 bankroll += wager;
-            }
-            else if (dealer_count > player_count)
+            } else if (dealer_count > player_count)
             {
-                cout << "Dealer wins\n";
+                cout << "# Dealer wins\n";
                 bankroll -= wager;
-            }
-            else if (dealer_count < player_count)
+            } else if (dealer_count < player_count)
             {
-                cout << "Player wins\n";
+                cout << "# Player wins\n";
                 bankroll += wager;
-            }
-            else
+            } else
             {
-                cout << "Push\n";
+                cout << "# Push\n";
             }
-        }
-        else
+        } else
         {
-            cout << "Player busts\n";
+            cout << "# Player busts\n";
             bankroll -= wager;
         }
     }
 
-    cout << "Player has " << bankroll << " after " << thishand << " hands\n";
+    cout << "# Player has " << bankroll << " after " << thishand << " hands\n";
     return 0;
 }

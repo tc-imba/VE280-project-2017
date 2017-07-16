@@ -22,7 +22,7 @@ public:
             {
                 return true;
             }
-            else if (value.count == 18 && dealer.spot == TWO && !(dealer.spot == SEVEN && dealer.spot == EIGHT))
+            if (value.count == 18 && !(dealer.spot == TWO || dealer.spot == SEVEN || dealer.spot == EIGHT))
             {
                 return true;
             }
@@ -33,11 +33,11 @@ public:
             {
                 return true;
             }
-            else if (value.count == 12 && !(dealer.spot >= FOUR && dealer.spot <= SIX))
+            if (value.count == 12 && !(dealer.spot >= FOUR && dealer.spot <= SIX))
             {
                 return true;
             }
-            else if (value.count >= 13 && value.count <= 16 && !(dealer.spot >= TWO && dealer.spot <= SIX))
+            if (value.count >= 13 && value.count <= 16 && !(dealer.spot >= TWO && dealer.spot <= SIX))
             {
                 return true;
             }
@@ -89,7 +89,7 @@ public:
         {
             count--;
         }
-        else if (c.spot >= 2 || c.spot <= 6)
+        else if (c.spot >= TWO && c.spot <= SIX)
         {
             count++;
         }

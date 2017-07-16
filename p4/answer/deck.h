@@ -3,19 +3,17 @@
 
 #include "card.h"
 
-class DeckEmpty
-{ // An exception type
+class DeckEmpty { // An exception type
 };
 
 const int DeckSize = 52;
 
-class Deck
-{
-public:
+class Deck {
     // A standard deck of 52 playing cards---no jokers
-    Card deck[DeckSize];   // The deck of cards
-    int next;             // The next card to deal
+    Card      deck[DeckSize];   // The deck of cards
+    int       next;             // The next card to deal
 
+ public:
 
     Deck();
     // EFFECTS: constructs a "newly opened" deck of cards.  first the
@@ -50,8 +48,8 @@ public:
     Card deal();
     // MODIFIES: this
 
-    // EFFECTS: returns the next card to be dealt.  If no cards
-    // remain, throws an instance of DeckEmpty.
+    // EFFECTS: deals the "next" card and returns that card.
+    // If no cards remain, throws an instance of DeckEmpty.
 
     int cardsLeft();
     // EFFECTS: returns the number of cards in the deck that have not
