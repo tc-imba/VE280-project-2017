@@ -70,11 +70,7 @@ public:
 
     int bet(unsigned int bankroll, unsigned int minimum)
     {
-        if (count >= 2 && minimum * 2 <= bankroll)
-        {
-            return minimum * 2;
-        }
-        return minimum;
+        return count >= 2 && minimum * 2 <= bankroll ? minimum * 2 : minimum;
     }
 
     bool draw(Card dealer, const Hand &player)
@@ -85,14 +81,8 @@ public:
 
     void expose(Card c)
     {
-        if (c.spot >= TEN)
-        {
-            count--;
-        }
-        else if (c.spot >= TWO && c.spot <= SIX)
-        {
-            count++;
-        }
+        if (c.spot >= TEN) count--;
+        else if (c.spot >= TWO && c.spot <= SIX) count++;
     }
 
     void shuffled()
