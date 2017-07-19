@@ -26,7 +26,7 @@ void Deck::reset()
 void Deck::shuffle(int n)
 {
     int leftNum = n, rightNum = DeckSize - n;
-    auto leftCards = new Card[leftNum + 1], rightCards = new Card[rightNum + 1];
+    auto leftCards = new Card[leftNum], rightCards = new Card[rightNum];
     for (int i = 0; i < leftNum; i++)
     {
         leftCards[i] = this->deck[i];
