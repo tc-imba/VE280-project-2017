@@ -1,0 +1,261 @@
+Initial state
+ho_e ____ ____ ____ 
+ho_e ____ ____ ____ 
+ho_e ____ fl_e ____ 
+____ ____ ____ ____ 
+Round 1
+Creature (hop east 1 0) takes action:
+Instruction 1: hop
+ho_e ____ ____ ____ 
+____ ho_e ____ ____ 
+ho_e ____ fl_e ____ 
+____ ____ ____ ____ 
+Creature (hop east 0 0) takes action:
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ho_e ____ ____ 
+ho_e ____ fl_e ____ 
+____ ____ ____ ____ 
+Creature (hop east 2 0) takes action:
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ho_e ____ ____ 
+____ ho_e fl_e ____ 
+____ ____ ____ ____ 
+Round 2
+Creature (hop east 1 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ho_e ____ 
+____ ho_e fl_e ____ 
+____ ____ ____ ____ 
+Creature (hop east 0 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ho_e ____ 
+____ ho_e fl_e ____ 
+____ ____ ____ ____ 
+Creature (hop east 2 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ho_e ____ 
+____ ho_e fl_e ____ 
+____ ____ ____ ____ 
+Creature (flytrap east 2 2) takes action:
+Instruction 1: ifenemy 4
+Instruction 2: left
+____ ho_e ____ ____ 
+____ ____ ho_e ____ 
+____ ho_e fl_n ____ 
+____ ____ ____ ____ 
+Round 3
+Creature (hop east 1 2) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_n ____ 
+____ ____ ____ ____ 
+Creature (hop east 0 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_n ____ 
+____ ____ ____ ____ 
+Creature (hop east 2 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_n ____ 
+____ ____ ____ ____ 
+Round 4
+Creature (hop east 1 3) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_n ____ 
+____ ____ ____ ____ 
+Creature (hop east 0 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_n ____ 
+____ ____ ____ ____ 
+Creature (hop east 2 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_n ____ 
+____ ____ ____ ____ 
+Creature (flytrap north 2 2) takes action:
+Instruction 3: go 1
+Instruction 1: ifenemy 4
+Instruction 2: left
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_w ____ 
+____ ____ ____ ____ 
+Round 5
+Creature (hop east 1 3) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_w ____ 
+____ ____ ____ ____ 
+Creature (hop east 0 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_w ____ 
+____ ____ ____ ____ 
+Creature (hop east 2 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_w ____ 
+____ ____ ____ ____ 
+Round 6
+Creature (hop east 1 3) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_w ____ 
+____ ____ ____ ____ 
+Creature (hop east 0 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_w ____ 
+____ ____ ____ ____ 
+Creature (hop east 2 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_w ____ 
+____ ____ ____ ____ 
+Creature (flytrap west 2 2) takes action:
+Instruction 3: go 1
+Instruction 1: ifenemy 4
+Instruction 2: left
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_s ____ 
+____ ____ ____ ____ 
+Round 7
+Creature (hop east 1 3) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_s ____ 
+____ ____ ____ ____ 
+Creature (hop east 0 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_s ____ 
+____ ____ ____ ____ 
+Creature (hop east 2 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_s ____ 
+____ ____ ____ ____ 
+Round 8
+Creature (hop east 1 3) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_s ____ 
+____ ____ ____ ____ 
+Creature (hop east 0 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_s ____ 
+____ ____ ____ ____ 
+Creature (hop east 2 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_s ____ 
+____ ____ ____ ____ 
+Creature (flytrap south 2 2) takes action:
+Instruction 3: go 1
+Instruction 1: ifenemy 4
+Instruction 2: left
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_e ____ 
+____ ____ ____ ____ 
+Round 9
+Creature (hop east 1 3) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_e ____ 
+____ ____ ____ ____ 
+Creature (hop east 0 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_e ____ 
+____ ____ ____ ____ 
+Creature (hop east 2 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_e ____ 
+____ ____ ____ ____ 
+Round 10
+Creature (hop east 1 3) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_e ____ 
+____ ____ ____ ____ 
+Creature (hop east 0 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_e ____ 
+____ ____ ____ ____ 
+Creature (hop east 2 1) takes action:
+Instruction 2: go 1
+Instruction 1: hop
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_e ____ 
+____ ____ ____ ____ 
+Creature (flytrap east 2 2) takes action:
+Instruction 3: go 1
+Instruction 1: ifenemy 4
+Instruction 2: left
+____ ho_e ____ ____ 
+____ ____ ____ ho_e 
+____ ho_e fl_n ____ 
+____ ____ ____ ____ 

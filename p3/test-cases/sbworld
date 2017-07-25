@@ -1,0 +1,11 @@
+4
+4
+PPLL
+PPLL
+FFHH
+FFHH
+hop east 1 0 f
+hop east 0 0
+hop east 2 0 f a
+flytrap east 2 2
+
